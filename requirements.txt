@@ -1,5 +1,5 @@
-numpy
 pandas
-Flask
-datatime
+numpy
+seaborn
+scikit-learn
 -e .
