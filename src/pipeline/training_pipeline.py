@@ -4,7 +4,7 @@ from src.logger import logging
 from src.execption import CustomException
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from dataclasses import dataclass
+
 
 from src.components.model_training import ModelTrainer
 from src.components.data_ingestion import DataIngestion
