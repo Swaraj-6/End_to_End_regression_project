@@ -25,8 +25,15 @@ class DataIngestion:
     def initiate_data_ingestion(self):
         logging.info('Data Ingestion methods Starts')
         try:
-            df=pd.read_csv(os.path.join('notebooks/data','train.csv'))
-            logging.info('Dataset read as pandas Dataframe')
+            try:
+                flag = True
+                df=pd.read_csv(os.path.join('notebooks/data','upload.csv'))
+                logging.info('Dataset reading from uploaded file')
+
+            except:
+                flag = False
+                df=pd.read_csv(os.path.join('notebooks/data','train.csv'))
+                logging.info('Dataset reading from database')
 
             os.makedirs(os.path.dirname(self.ingestion_config.raw_data_path),exist_ok=True)
             df.to_csv(self.ingestion_config.raw_data_path,index=False)
@@ -40,7 +47,8 @@ class DataIngestion:
 
             return(
                 self.ingestion_config.train_data_path,
-                self.ingestion_config.test_data_path
+                self.ingestion_config.test_data_path,
+                flag
             )
   
             

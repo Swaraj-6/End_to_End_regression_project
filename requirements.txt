@@ -1,6 +1,8 @@
 pandas
-Flask
+flask
 numpy
 seaborn
 scikit-learn
+flask_wtf
+wtforms
 -e .

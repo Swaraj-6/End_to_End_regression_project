@@ -1,12 +1,46 @@
 from flask import Flask, request, render_template, jsonify
 from src.pipeline.prediction_pipeline import CustomData, PredictPipeline
-
+from flask_wtf import FlaskForm
+from wtforms import FileField, SubmitField
+from werkzeug.utils import secure_filename
+import os
+from wtforms.validators import InputRequired
+from src.pipeline.training_pipeline import TrainingPipeline
 
 app = Flask(__name__)
+app.config["SECRET_KEY"] = 'secretkey'
+app.config["UPLOAD_FOLDER"] = 'notebooks\data'
+
+class UploadFileForm(FlaskForm):
+    file = FileField("File", validators=[InputRequired()])
+    submit = SubmitField("Upload File")
+
 
 @app.route("/")
 def home_page():
     return render_template('index.html')
+
+@app.route("/training", methods=['GET', 'POST'])
+def training_model():
+    if request.method == 'GET':
+        form = UploadFileForm()
+        # if form.validate_on_submit():
+        #     # getting the file from webpage
+        #     file = form.file.data  
+        #     file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config['UPLOAD_FOLDER'], secure_filename(file.filename)))
+        #     return "File Uploaded successfully"
+        return render_template("training.html", form=form)
+    else:
+        form = UploadFileForm() 
+        if form.validate_on_submit():
+            # getting the file from webpage
+            file = form.file.data  
+            file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config['UPLOAD_FOLDER'], secure_filename(file.filename)))
+            obj = TrainingPipeline()
+            best_model, best_score, flag= obj.model_train()
+            best_score = round(best_score*100, 2)
+            return render_template("trainingResult.html", final_model = best_model, final_score =best_score, final_flag = flag)
+
 
 @app.route('/predict', methods=['GET', 'POST'])
 def predict_datapoint():
