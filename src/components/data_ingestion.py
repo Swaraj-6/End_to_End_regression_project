@@ -26,7 +26,7 @@ class DataIngestion:
         logging.info('Data Ingestion methods Starts')
         try:
             try:
-                flag = True
+                flag = True                
                 df=pd.read_csv(os.path.join('notebooks/data','upload.csv'))
                 logging.info('Dataset reading from uploaded file')
 
