@@ -1,1 +1,44 @@
-<h1>{{final_result}}</h1>
+<div style="
+  /* Style the container element */
+  border: 2px solid #1E90FF;
+  border-radius: 30px;
+  padding: 10px;
+  /* margin-top: 50px; */
+  margin: 300px;
+  /* margin-left: 120px;  */
+  text-align: center;
+">
+
+    <h1 style="
+    /* Style the h1 element */
+    font-size: 30px;
+    font-weight: bold;
+    color: #1E90FF;
+    text-shadow: 2px 2px #ddd;
+    animation-name: color-change;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  ">
+        <p>The Price of the Diamond is 
+            <u>{{final_result}} $</u>
+        </p>
+    </h1>
+
+    <style>
+        /* Define the animation effect */
+        @keyframes color-change {
+            0% {
+                color: #1E90FF;
+            }
+
+            50% {
+                color: #00BFFF;
+            }
+
+            100% {
+                color: #1E90FF;
+            }
+        }
+    </style>
+
+</div>

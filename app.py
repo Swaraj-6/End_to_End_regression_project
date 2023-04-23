@@ -44,7 +44,11 @@ def training_model():
             obj = TrainingPipeline()
             best_model, best_score, flag= obj.model_train()
             best_score = round(best_score*100, 2)
-            return render_template("trainingResult.html", final_model = best_model, final_score =best_score, final_flag = flag)
+            if flag:
+                st = f"Model trained on given dataset has chosen {best_model} model and having accuracy of {best_score}%"
+            else:
+                st = f"Given dataset is not appropriate, but model trained on inner dataset and choose {best_model} as best model with accuracy of {best_score}%"
+            return render_template("trainingResult.html", final_model = best_model, final_score =best_score, final_st = st)
 
 
 @app.route('/predict', methods=['GET', 'POST'])

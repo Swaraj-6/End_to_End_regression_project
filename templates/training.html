@@ -1,17 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<style>
+  /* Style the body */
+  body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://www.diamondbuyingschool.com/wp-content/uploads/2020/11/diamonds_lightbluebackground_16x9.jpg');
+    background-size: cover;
+  }
+
+  /* Style the heading */
+  h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-top: 50px;
+
+  }
+
+  /* Style the form */
+  form {
+    width: 80%;
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Style the form elements */
+  form input[type="file"] {
+    display: block;
+    margin: 0 auto 20px;
+  }
+
+  form input[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    background-color: #333;
+    color: #22d1eb;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .butn {
+    /* background-color: #4CAF50; Green */
+    border: none;
+    color: blue;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    /* display: inline-block; */
+    font-size: 16px;
+  }
+
+  form input[type="submit"]:hover {
+    background-color: #555;
+  }
+</style>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Training model</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Training model</title>
 </head>
+
 <body>
-    <h1>Training model</h1>
-    <form action="{{url_for('training_model')}}", method="POST", enctype="multipart/form-data">
-        {{form.hidden_tag()}}
-        {{form.file()}}
-        {{form.submit()}}
-    </form>
+  <h1><u>Training model</u></h1>
+  <form action="{{url_for('training_model')}}" , method="POST" , enctype="multipart/form-data">
+    {{form.hidden_tag()}}
+    {{form.file()}}
+    {{form.submit()}}
+  </form>
+  <br>
+  <div class="code">
+    <div style="background-color: #f5f5f5; padding: 20px; background-size: cover;">
+
+      <div style="background-color: #fff; border: 1px solid #ddd; padding: 10px; margin-bottom: 30px;">
+
+        <h2><u>Rules for Uploading Training Data Set</u></h2>
+        <p style="margin-bottom: 10px; font-weight: bold;">There are 12 Rules for Uploading Training Data Set</p>
+        <ul style="margin-bottom: 10px;">
+          <li>
+            Uploaded file must be a csv file
+          </li>
+
+          <br>
+
+          <li>
+            File must have name as ("upload.csv")
+          </li>
+
+          <br>
+
+          <li>
+            File must have 10 independent variable and 1 dependent variable
+          </li>
+
+          <br>
+
+          <li>
+            First column must be an ID of unique number for each row
+          </li>
+
+          <br>
+
+          <li>
+            Second column must be carat of diamond in float formate
+          </li>
+
+          <br>
+
+          <li>
+            Third column must be of cut with categorized as Fari, Good, Very Good, Premium, Ideal with Fair being lowest
+            and Ideal being of higest value
+          </li>
+
+          <br>
+
+          <li>
+            Forth column must be of color with categorizes as D, E, F, G, H, I, J with D being lowest and J being
+            of highest value.
+          </li>
+
+          <br>
+
+          <li>
+            Fifth column must be of clarity of diamond with categorieze as I1, SI2, SI1, VS2, VS1, VVS2, WS1, IF with I1
+            being lowest
+            and IF being of highest value.
+          </li>
+
+          <br>
+
+          <li>
+            Sixth column must be of bepth of diamond in mm.
+          </li>
+
+          <br>
+
+          <li>
+            Seventh column must be the diamond's table in facet.
+          </li>
+
+          <br>
+
+          <li>
+            Eighth, Ninth & Tenth column must be diamond's X,Y,Z dimension.
+          </li>
+
+          <br>
+
+          <li>
+            Eleventh column must be the price of the diamond in Dollar($).
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>
