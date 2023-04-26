@@ -8,7 +8,8 @@ import os.path
 from wtforms.validators import InputRequired
 from src.pipeline.training_pipeline import TrainingPipeline
 
-app = Flask(__name__)
+application = Flask(__name__)
+app = application
 app.config["SECRET_KEY"] = 'secretkey'
 app.config["UPLOAD_FOLDER"] = 'notebooks\data'
 
