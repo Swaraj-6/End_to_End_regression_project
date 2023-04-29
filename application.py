@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template
 from src.pipeline.prediction_pipeline import CustomData, PredictPipeline
 from flask_wtf import FlaskForm
 from wtforms import FileField, SubmitField
@@ -85,4 +85,4 @@ def predict_datapoint():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0")    
+    app.run(host="0.0.0.0", debug=True)    
