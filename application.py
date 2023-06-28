@@ -53,7 +53,7 @@ def training_model():
 
 
 @app.route('/predict', methods=['GET', 'POST'])
-def predict_datapoint():
+def predict_datapoint(): 
     if request.method=='GET':
         return render_template('form.html')
     
